@@ -12,8 +12,6 @@ struct DataItem {
 };
 
 struct DataItem* hashArray[UINT16_MAX];
-struct DataItem* dummyItem;
-struct DataItem* item;
 
 int hashCode(int key) {
    return key % SIZE;
@@ -47,7 +45,7 @@ void insert(int key,int data)
    {
        if (hashArray[hashIndex]->key == key)
        {
-           hashArray[hashIndex]->data = data;
+           hashArray[hashIndex] = item;
            return;
        }
       ++hashIndex;
@@ -118,7 +116,6 @@ int main()
    }
 
    free(hashArray);
-   free(dummyItem);
 
    return 0;
 
